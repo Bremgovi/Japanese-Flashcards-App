@@ -1,53 +1,111 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TouchableWithoutFeedback, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
-const QuizGame = ({ data }) => {
+
+const QuizGame = ({ questions, navigation }) => {
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const handleAnswerSelection = (answer) => {
     setSelectedAnswer(answer);
   };
 
   const handleSubmit = () => {
-    setIsSubmitted(true);
+    if (isSubmitted) {
+      if (isAnswerCorrect()) {
+        setCorrectAnswers(correctAnswers + 1);
+      }
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setIsSubmitted(false);
+      setSelectedAnswer(null);
+    } else {
+      setIsSubmitted(true);
+    }
   };
 
   const isAnswerCorrect = () => {
-    return selectedAnswer === data.correctAnswer;
+    if (currentQuestionIndex < questions.length) {
+      return selectedAnswer === questions[currentQuestionIndex].correctAnswer;
+    }
+    return false;
   };
+
   return (
     <View style={[styles.container, styles.background]}>
-      <View style={styles.container}>
-        <Text style={styles.question}>{data.question}</Text>
-        {data.answers.map((answer, index) => (
-          <TouchableWithoutFeedback key={index} onPress={() => handleAnswerSelection(answer)} disabled={isSubmitted}>
-            <View style={[styles.answerButton, selectedAnswer === answer ? styles.selectedAnswer : null]}>
-              <Text style={[styles.answerText, selectedAnswer === answer ? styles.selectedAnswerText : null]}>{answer}</Text>
-            </View>
-          </TouchableWithoutFeedback>
-        ))}
-      </View>
+      {currentQuestionIndex < questions.length ? (
+        <View style={styles.container}>
+          <Image
+            source={require("../assets/catStudy.png")}
+            style={{
+              width: 150,
+              height: 150,
+              marginBottom: 5,
+            }}
+          />
+          <Text style={styles.question}>{questions[currentQuestionIndex].question}</Text>
+          {questions[currentQuestionIndex].answers.map((answer, index) => (
+            <TouchableWithoutFeedback key={index} onPress={() => handleAnswerSelection(answer)} disabled={isSubmitted}>
+              <View style={[styles.answerButton, selectedAnswer === answer ? styles.selectedAnswer : null]}>
+                <Text style={[styles.answerText, selectedAnswer === answer ? styles.selectedAnswerText : null]}>{answer}</Text>
+              </View>
+            </TouchableWithoutFeedback>
+          ))}
+        </View>
+      ) : (
+        <View style={styles.finalScreen}>
+          <Text style={styles.finalScreenHeader}>Haz completado la lección!</Text>
+          <Image
+            source={require("../assets/endLesson.png")}
+            style={{
+              width: 200,
+              height: 200,
+              margin: 20,
+            }}
+          />
+          <Text style={styles.finalScreenText}>
+            Has contestado{" "}
+            <Text style={{ color: "rgba(119, 164, 204, 1)" }}>
+              {correctAnswers} de {questions.length}{" "}
+            </Text>
+            preguntas correctamente.
+          </Text>
+        </View>
+      )}
       <View style={[styles.feedbackBox, isSubmitted ? styles.feedbackBoxShow : null]}>
         <Text style={[styles.feedbackHeader, isAnswerCorrect() ? styles.correctAnswerText : styles.incorrectAnswerText]}>
           {isSubmitted ? (
             isAnswerCorrect() ? (
-              <Icon name="check-circle" size={30} color="rgba(121, 210, 121, 1)" />
+              <Icon name="check-circle" size={28} color="rgba(121, 210, 121, 1)" />
             ) : (
-              <Icon name="times-circle" size={30} color="rgba(240, 50, 95, 1)" />
+              <Icon name="times-circle" size={28} color="rgba(240, 50, 95, 1)" />
             )
           ) : null}
-          {isSubmitted ? " The answer is" + (isAnswerCorrect() ? " correct" : " wrong") : null}
+          {isSubmitted ? " La respuesta es " + (isAnswerCorrect() ? "correcta" : "incorrecta") : null}
         </Text>
         <TouchableOpacity
-          style={[styles.submitButton, isSubmitted ? (isAnswerCorrect() ? styles.correctAnswer : styles.incorrectAnswer) : null, !selectedAnswer ? styles.disabledButton : null]}
-          onPress={handleSubmit}
-          disabled={isSubmitted || !selectedAnswer}
+          style={[
+            styles.submitButton,
+            isSubmitted ? (isAnswerCorrect() ? styles.correctAnswer : styles.incorrectAnswer) : null,
+            !selectedAnswer ? styles.disabledButton : null,
+            currentQuestionIndex < questions.length ? null : { backgroundColor: "rgba(170, 209, 230, 1)" },
+          ]}
+          onPress={() => {
+            if (currentQuestionIndex < questions.length) {
+              handleSubmit();
+            } else {
+              navigation.navigate("HomeScreen");
+            }
+          }}
+          disabled={!selectedAnswer && !isSubmitted && currentQuestionIndex < questions.length}
         >
-          <Text style={styles.submitButtonText}>Submit Answer</Text>
+          <Text style={styles.submitButtonText}>{currentQuestionIndex < questions.length ? (isSubmitted ? "Siguiente" : "Checar") : "Volver"}</Text>
         </TouchableOpacity>
         {isSubmitted && (
-          <Text style={[styles.feedbackText, isAnswerCorrect() ? styles.correctAnswerText : styles.incorrectAnswerText]}>The correct answer is: {data.correctAnswer}</Text>
+          <Text style={[styles.feedbackText, isAnswerCorrect() ? styles.correctAnswerText : styles.incorrectAnswerText]}>
+            La respuesta correcta es: {questions[currentQuestionIndex].correctAnswer}
+          </Text>
         )}
       </View>
     </View>
@@ -57,6 +115,23 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: "rgba(36, 36, 61, 1)",
   },
+  finalScreen: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  finalScreenHeader: {
+    textAlign: "center",
+    color: "rgba(250, 179, 27, 1)",
+    fontSize: 50,
+    fontWeight: "bold",
+  },
+  finalScreenText: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
   container: {
     width: "100%",
     flex: 1,
@@ -65,11 +140,11 @@ const styles = StyleSheet.create({
   },
   question: {
     padding: 10,
-    fontSize: 50,
+    fontSize: 30,
     color: "white",
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 5,
   },
   answerButton: {
     width: "80%",
@@ -87,7 +162,7 @@ const styles = StyleSheet.create({
   },
   feedbackBox: {
     width: "100%",
-    height: "30%",
+    height: "25%",
     justifyContent: "flex-start",
     padding: 10,
   },
@@ -95,8 +170,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(32, 32, 53, 1)",
   },
   feedbackHeader: {
-    margin: 10,
-    fontSize: 30,
+    margin: 0,
+    fontSize: 29,
     fontWeight: "bold",
   },
   feedbackText: {
@@ -107,7 +182,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     width: "80%",
-    height: "25%",
+    height: "30%",
     backgroundColor: "rgba(121, 210, 121, 1)",
     borderRadius: 10,
     alignItems: "center",

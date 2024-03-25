@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Inter_900Black, Inter_500Medium } from "@expo-google-fonts/inter";
 import CategoryList from "./src/components/categories";
 import NavBar from "./src/components/navbar";
 import { Dimensions } from "react-native";
-import QuizGame from "./src/components/Questions";
+import QuizGame from "./src/components/questions";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -58,12 +58,11 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <NavBar title="Aprende Japonés!" subtitle="日本語を勉強します" />
       <View style={styles.content}>
-        <TouchableOpacity onPress={handleImageClick}>
-          <Image source={require("./src/assets/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
-        </TouchableOpacity>
-        {isClicked && <DialogueBalloon position={dialoguePosition} />}
-        <ScrollViewHeader />
         <ScrollView style={styles.scrollView}>
+          <TouchableOpacity onPress={handleImageClick}>
+            <Image source={require("./src/assets/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
+          </TouchableOpacity>
+          {isClicked && <DialogueBalloon position={dialoguePosition} />}
           <CategoryList navigation={navigation} />
         </ScrollView>
       </View>
@@ -73,14 +72,21 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const About = ({ navigation }) => {
-  const data = {
-    question: "What is the capital of France?",
-    answers: ["Paris", "London", "Berlin", "Rome"],
-    correctAnswer: "Paris",
-  };
+  const questions = [
+    {
+      question: "What city is the capital of France?",
+      answers: ["Paris", "London", "Berlin", "Rome"],
+      correctAnswer: "Paris",
+    },
+    {
+      question: "What city is the capital of Mexico?",
+      answers: ["Paris", "Mexico", "Berlin", "Rome"],
+      correctAnswer: "Mexico",
+    },
+  ];
   return (
     <View style={styles.container}>
-      <QuizGame data={data}></QuizGame>
+      <QuizGame questions={questions} navigation={navigation}></QuizGame>
     </View>
   );
 };
@@ -150,9 +156,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
+    alignSelf: "center",
     width: 200,
     height: 200,
-    marginBottom: 20,
+    margin: 20,
   },
   dialogueBalloon: {
     position: "absolute",

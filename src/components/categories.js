@@ -1,10 +1,6 @@
-import { StyleSheet, Text, View, Image, ToastAndroid, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 export default function CategoryList({ navigation }) {
-  const showToast = (text) => {
-    ToastAndroid.show(text + " Clicked", ToastAndroid.SHORT);
-    navigation.navigate("About");
-  };
   const categories = [
     { id: 1, image: require(`../assets/animales.png`), text: "Animales" },
     { id: 2, image: require(`../assets/familia.png`), text: "Familia" },
@@ -24,7 +20,7 @@ export default function CategoryList({ navigation }) {
           key={category.id}
           style={styles.categoryItem}
           onPress={() => {
-            showToast(category.text);
+            navigation.navigate("About");
           }}
         >
           <Image source={category.image} style={styles.categoryImage} />
