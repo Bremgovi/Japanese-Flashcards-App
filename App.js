@@ -4,10 +4,10 @@ import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableOpacity } f
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Inter_900Black, Inter_500Medium } from "@expo-google-fonts/inter";
-import CategoryList from "./components/categories";
-import NavBar from "./components/navbar";
+import CategoryList from "./src/components/categories";
+import NavBar from "./src/components/navbar";
 import { Dimensions } from "react-native";
-
+import QuizGame from "./src/components/Questions";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
       <NavBar title="Aprende Japonés!" subtitle="日本語を勉強します" />
       <View style={styles.content}>
         <TouchableOpacity onPress={handleImageClick}>
-          <Image source={require("./assets/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
+          <Image source={require("./src/assets/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
         </TouchableOpacity>
         {isClicked && <DialogueBalloon position={dialoguePosition} />}
         <ScrollViewHeader />
@@ -73,12 +73,14 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const About = ({ navigation }) => {
+  const data = {
+    question: "What is the capital of France?",
+    answers: ["Paris", "London", "Berlin", "Rome"],
+    correctAnswer: "Paris",
+  };
   return (
     <View style={styles.container}>
-      <NavBar />
-      <View style={styles.content}>
-        <Button title="Go to home" onPress={() => navigation.navigate("HomeScreen")} />
-      </View>
+      <QuizGame data={data}></QuizGame>
     </View>
   );
 };
