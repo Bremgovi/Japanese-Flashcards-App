@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,7 +8,6 @@ import CategoryList from "./src/components/Categories";
 import NavBar from "./src/components/NavBar";
 import QuizGame from "./src/components/QuizGame";
 import questionsData from "./src/assets/questions.json";
-import RNFS from "react-native-fs";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,24 +35,7 @@ const HomeScreen = ({ navigation }) => {
   const [dialoguePosition, setDialoguePosition] = useState({ x: 0, y: 0 });
   const [imageLayout, setImageLayout] = useState({ width: 0, height: 0 });
   const [isClicked, setIsClicked] = useState(false);
-  const [questionsData, setQuestionsData] = useState(null);
   const timeoutRef = useRef(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://bremgovi.github.io/questions.json");
-        const json = await response.json();
-        setQuestionsData(json);
-        // Save JSON data to local storage
-        await RNFS.writeFile(RNFS.DocumentDirectoryPath + "/questions.json", JSON.stringify(json), "utf8");
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleImageLayout = (event) => {
     const { x, y, width, height } = event.nativeEvent.layout;
@@ -93,7 +75,6 @@ const HomeScreen = ({ navigation }) => {
 const QuestionGame = ({ route, navigation }) => {
   const { category } = route.params;
   const questionsList = questionsData.questions.filter((question) => question.category === category);
-
   return (
     <View style={styles.container}>
       <QuizGame questions={questionsList} navigation={navigation}></QuizGame>
