@@ -37,7 +37,7 @@ const QuizGame = ({ questions, navigation }) => {
       {currentQuestionIndex < questions.length ? (
         <View style={styles.container}>
           <Image
-            source={require("../assets/catStudy.png")}
+            source={require("../assets/images/catStudy.png")}
             style={{
               width: 150,
               height: 150,
@@ -57,7 +57,7 @@ const QuizGame = ({ questions, navigation }) => {
         <View style={styles.finalScreen}>
           <Text style={styles.finalScreenHeader}>Haz completado la lección!</Text>
           <Image
-            source={require("../assets/endLesson.png")}
+            source={require("../assets/images/endLesson.png")}
             style={{
               width: 200,
               height: 200,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   feedbackHeader: {
     margin: 0,
-    fontSize: 29,
+    fontSize: 28,
     fontWeight: "bold",
   },
   feedbackText: {

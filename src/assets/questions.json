@@ -1,0 +1,76 @@
+{
+    "questions": [
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el animal nacional de Japón?",
+            "answers": ["ねこ", "いぬ", "さる", "とり"],
+            "correctAnswer": "ねこ"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el animal nacional de Australia?",
+            "answers": ["コアラ", "カンガルー", "キリン", "パンダ"],
+            "correctAnswer": "カンガルー"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice 'madre' en japonés?",
+            "answers": ["はは", "ちち", "あね", "おとうと"],
+            "correctAnswer": "はは"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice 'hermano mayor' en japones?",
+            "answers": ["いもうと", "おとうと", "おば", "あに"],
+            "correctAnswer": "あに"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cuál es el plato tradicional japonés hecho de arroz y pescado crudo?",
+            "answers": ["すし", "らーめん", "てんぷら", "うどん"],
+            "correctAnswer": "すし"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cuál es el plato tradicional mexicano hecho de tortillas de maíz rellenas?",
+            "answers": ["たこ", "ぶりと", "えんちらだ", "けさでぃや"],
+            "correctAnswer": "たこ"
+        },
+        {
+            "category": "Numeros",
+            "question": "¿Cómo se dice 'cinco' en japonés?",
+            "answers": ["いち", "に", "さん", "ご"],
+            "correctAnswer": "ご"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Cómo se dice 'enero' en japonés?",
+            "answers": ["じゅういちがつ", "にがつ", "さんがつ", "いちがつ"],
+            "correctAnswer": "いちがつ"
+        },
+        {
+            "category": "Cultura",
+            "question": "¿Cuál es el nombre del monte más alto de Japón?",
+            "answers": ["あそさん", "ふじさん", "たかさん", "さかさん"],
+            "correctAnswer": "ふじさん"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cómo se dice 'gracias' en japonés?",
+            "answers": ["こんにちは", "さようなら", "すみません", "ありがとう"],
+            "correctAnswer": "ありがとう"
+        },
+        {
+            "category": "Verbos",
+            "question": "¿Cómo se dice 'comer' en japonés?",
+            "answers": ["のむ", "たべる", "あるく", "ねる"],
+            "correctAnswer": "たべる"
+        },
+        {
+            "category": "Adjetivos",
+            "question": "¿Cómo se dice 'feliz' en japonés?",
+            "answers": ["かなしい", "うれしい", "おこっている", "つかれている"],
+            "correctAnswer": "うれしい"
+        }
+    ]
+}

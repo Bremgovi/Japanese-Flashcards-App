@@ -1,13 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Inter_900Black, Inter_500Medium } from "@expo-google-fonts/inter";
-import CategoryList from "./src/components/categories";
-import NavBar from "./src/components/navbar";
-import { Dimensions } from "react-native";
-import QuizGame from "./src/components/questions";
+import CategoryList from "./src/components/Categories";
+import NavBar from "./src/components/NavBar";
+import QuizGame from "./src/components/QuizGame";
+import questionsData from "./src/assets/questions.json";
+import RNFS from "react-native-fs";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -24,7 +26,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
+        <Stack.Screen name="QuestionGame" component={QuestionGame} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -34,7 +36,24 @@ const HomeScreen = ({ navigation }) => {
   const [dialoguePosition, setDialoguePosition] = useState({ x: 0, y: 0 });
   const [imageLayout, setImageLayout] = useState({ width: 0, height: 0 });
   const [isClicked, setIsClicked] = useState(false);
+  const [questionsData, setQuestionsData] = useState(null);
   const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://bremgovi.github.io/questions.json");
+        const json = await response.json();
+        setQuestionsData(json);
+        // Save JSON data to local storage
+        await RNFS.writeFile(RNFS.DocumentDirectoryPath + "/questions.json", JSON.stringify(json), "utf8");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleImageLayout = (event) => {
     const { x, y, width, height } = event.nativeEvent.layout;
@@ -60,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <ScrollView style={styles.scrollView}>
           <TouchableOpacity onPress={handleImageClick}>
-            <Image source={require("./src/assets/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
+            <Image source={require("./src/assets/images/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
           </TouchableOpacity>
           {isClicked && <DialogueBalloon position={dialoguePosition} />}
           <CategoryList navigation={navigation} />
@@ -71,30 +90,13 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-const About = ({ navigation }) => {
-  const questions = [
-    {
-      question: "What city is the capital of France?",
-      answers: ["Paris", "London", "Berlin", "Rome"],
-      correctAnswer: "Paris",
-    },
-    {
-      question: "What city is the capital of Mexico?",
-      answers: ["Paris", "Mexico", "Berlin", "Rome"],
-      correctAnswer: "Mexico",
-    },
-  ];
+const QuestionGame = ({ route, navigation }) => {
+  const { category } = route.params;
+  const questionsList = questionsData.questions.filter((question) => question.category === category);
+
   return (
     <View style={styles.container}>
-      <QuizGame questions={questions} navigation={navigation}></QuizGame>
-    </View>
-  );
-};
-
-const ScrollViewHeader = () => {
-  return (
-    <View style={styles.scrollViewHeader}>
-      <Text style={styles.header}>Categorias</Text>
+      <QuizGame questions={questionsList} navigation={navigation}></QuizGame>
     </View>
   );
 };
@@ -142,13 +144,6 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
     color: "white",
     fontWeight: "bold",
-  },
-  scrollViewHeader: {
-    width: Dimensions.get("window").width,
-    backgroundColor: "rgba(21, 21, 36, 1)",
-    height: "10%",
-    alignItems: "center",
-    justifyContent: "center",
   },
   content: {
     flex: 1,
