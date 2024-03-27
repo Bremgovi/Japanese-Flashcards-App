@@ -4,10 +4,10 @@
     "slug": "FlashcardsApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,15 +19,21 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/images//adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.bremgovi.FlashcardsApp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/images/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a7b7f117-743f-4a26-bffd-e0256a54ca10"
+      }
+    }
   }
 }

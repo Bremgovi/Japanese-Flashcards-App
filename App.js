@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,7 +7,8 @@ import { useFonts, Inter_900Black, Inter_500Medium } from "@expo-google-fonts/in
 import CategoryList from "./src/components/Categories";
 import NavBar from "./src/components/NavBar";
 import QuizGame from "./src/components/QuizGame";
-import questionsData from "./src/assets/questions.json";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+//import questionsData from "./src/assets/questions.json";
 
 const Stack = createNativeStackNavigator();
 
@@ -74,7 +75,28 @@ const HomeScreen = ({ navigation }) => {
 
 const QuestionGame = ({ route, navigation }) => {
   const { category } = route.params;
-  const questionsList = questionsData.questions.filter((question) => question.category === category);
+  const [questionsList, setQuestionsList] = useState([]);
+
+  useEffect(() => {
+    async function fetchQuestions() {
+      try {
+        // Fetch questions.json from the server
+        const response = await fetch("https://bremgovi.github.io/Japanese-Flashcards-App/questions.json");
+        const questionsData = await response.json();
+        // Filter questions based on category
+        const filteredQuestions = questionsData.questions.filter((question) => question.category === category);
+        // Save filtered questions to AsyncStorage
+        await AsyncStorage.setItem("questions", JSON.stringify(filteredQuestions));
+        // Set questionsList state
+        setQuestionsList(filteredQuestions);
+      } catch (error) {
+        console.error("Error fetching questions:", error);
+      }
+    }
+
+    fetchQuestions();
+  }, [category]); // Fetch questions when category changes
+
   return (
     <View style={styles.container}>
       <QuizGame questions={questionsList} navigation={navigation}></QuizGame>
