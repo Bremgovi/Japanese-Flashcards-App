@@ -8,7 +8,7 @@ import CategoryList from "./src/components/Categories";
 import NavBar from "./src/components/NavBar";
 import QuizGame from "./src/components/QuizGame";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import HiraganaSyllabary from "./src/components/HiraganaSillabary";
+import Sillabary from "./src/components/Sillabary";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +28,7 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="QuestionGame" component={QuestionGame} options={{ headerShown: false }} />
         <Stack.Screen name="Hiragana" component={Hiragana} options={{ title: "Hiragana" }} />
+        <Stack.Screen name="Katakana" component={Katakana} options={{ title: "Katakana" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -62,9 +63,14 @@ const HomeScreen = ({ navigation }) => {
       <NavBar title="Aprende Japonés!" subtitle="日本語を勉強します" />
       <View style={styles.content}>
         <ScrollView style={styles.scrollView}>
-          <TouchableOpacity onPress={() => navigation.navigate("Hiragana")}>
-            <Text style={styles.header}>Hiragana</Text>
-          </TouchableOpacity>
+          <View style={styles.sillabaryContainer}>
+            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Hiragana")}>
+              <Text style={styles.sillabaryText}>Hiragana</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Katakana")}>
+              <Text style={styles.sillabaryText}>Katakana</Text>
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity onPress={handleImageClick}>
             <Image source={require("./src/assets/images/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
           </TouchableOpacity>
@@ -111,9 +117,103 @@ const QuestionGame = ({ route, navigation }) => {
 };
 
 const Hiragana = ({ navigation }) => {
+  const hiragana = [
+    "あ",
+    "い",
+    "う",
+    "え",
+    "お",
+    "か",
+    "き",
+    "く",
+    "け",
+    "こ",
+    "さ",
+    "し",
+    "す",
+    "せ",
+    "そ",
+    "た",
+    "ち",
+    "つ",
+    "て",
+    "と",
+    "な",
+    "に",
+    "ぬ",
+    "ね",
+    "の",
+    "は",
+    "ひ",
+    "ふ",
+    "へ",
+    "ほ",
+    "ま",
+    "み",
+    "む",
+    "め",
+    "も",
+    "ら",
+    "り",
+    "る",
+    "れ",
+    "ろ",
+  ];
+  const HiraganaSpecialChars = ["や", "ゆ", "よ", "わ", "を", "ん"];
   return (
     <View style={styles.container}>
-      <HiraganaSyllabary navigation={navigation} />
+      <Sillabary navigation={navigation} chars={hiragana} specialChars={HiraganaSpecialChars} />
+    </View>
+  );
+};
+
+const Katakana = ({ navigation }) => {
+  const katakana = [
+    "ア",
+    "イ",
+    "ウ",
+    "エ",
+    "オ",
+    "カ",
+    "キ",
+    "ク",
+    "ケ",
+    "コ",
+    "サ",
+    "シ",
+    "ス",
+    "セ",
+    "ソ",
+    "タ",
+    "チ",
+    "ツ",
+    "テ",
+    "ト",
+    "ナ",
+    "ニ",
+    "ヌ",
+    "ネ",
+    "ノ",
+    "ハ",
+    "ヒ",
+    "フ",
+    "ヘ",
+    "ホ",
+    "マ",
+    "ミ",
+    "ム",
+    "メ",
+    "モ",
+    "ラ",
+    "リ",
+    "ル",
+    "レ",
+    "ロ",
+  ];
+  const KatakanaSpecialChars = ["ヤ", "ユ", "ヨ", "ワ", "ヲ", "ン"];
+  return (
+    <View style={styles.container}>
+      <Sillabary navigation={navigation} chars={katakana} specialChars={KatakanaSpecialChars} />
     </View>
   );
 };
@@ -149,9 +249,30 @@ const DialogueBalloon = ({ position }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  sillabaryButton: {
+    width: "30%",
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
+    backgroundColor: "rgba(175, 138, 188, 1)",
+  },
+  sillabaryContainer: {
+    width: "100%",
     flex: 1,
-    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  sillabaryText: {
+    textAlign: "center",
+    fontFamily: "Inter_500Medium",
+    fontSize: 20,
+    color: "white",
+    fontWeight: "bold",
+  },
+  container: {
+    width: "100%",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },

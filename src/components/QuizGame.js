@@ -6,6 +6,7 @@ import { Audio } from "expo-av";
 
 const QuizGame = ({ questions, navigation }) => {
   const [sound, setSound] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -23,24 +24,21 @@ const QuizGame = ({ questions, navigation }) => {
     }
   }, [currentQuestionIndex]);
 
-  const handleAnswerSelection = (answer) => {
-    setSelectedAnswer(answer);
-    Speech.speak(answer, { language: "ja-JP" });
-  };
-  /*
-  const handleSubmit = async () => {
-    if (isSubmitted) {
-      if (isAnswerCorrect()) {
-        setCorrectAnswers(correctAnswers + 1);
-      }
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setIsSubmitted(false);
-      setSelectedAnswer(null);
+  const handleTTS = (answer) => {
+    if (isPlaying) {
+      Speech.stop();
+      Speech.speak(answer, { language: "ja-JP" });
     } else {
-      setIsSubmitted(true);
+      Speech.speak(answer, { language: "ja-JP" });
+      setIsPlaying(true);
     }
   };
-*/
+
+  const handleAnswerSelection = (answer) => {
+    setSelectedAnswer(answer);
+    handleTTS(answer);
+  };
+
   const handleSubmit = async () => {
     if (isSubmitted) {
       // If already submitted, proceed to the next question or finish the quiz
