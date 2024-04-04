@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, TouchableWithoutFeedback, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import * as Speech from "expo-speech";
+import { Audio } from "expo-av";
 
 const QuizGame = ({ questions, navigation }) => {
+  const [sound, setSound] = useState();
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  async function playSound(audio) {
+    const { sound } = await Audio.Sound.createAsync(audio);
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    if (currentQuestionIndex === questions.length) {
+      playSound(require("../assets/audio/lessonFinish.mp3"));
+    }
+  }, [currentQuestionIndex]);
+
   const handleAnswerSelection = (answer) => {
     setSelectedAnswer(answer);
+    Speech.speak(answer, { language: "ja-JP" });
   };
-
-  const handleSubmit = () => {
+  /*
+  const handleSubmit = async () => {
     if (isSubmitted) {
       if (isAnswerCorrect()) {
         setCorrectAnswers(correctAnswers + 1);
@@ -22,6 +38,24 @@ const QuizGame = ({ questions, navigation }) => {
       setSelectedAnswer(null);
     } else {
       setIsSubmitted(true);
+    }
+  };
+*/
+  const handleSubmit = async () => {
+    if (isSubmitted) {
+      // If already submitted, proceed to the next question or finish the quiz
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setIsSubmitted(false);
+      setSelectedAnswer(null);
+    } else {
+      // If not submitted, check the answer
+      setIsSubmitted(true);
+      if (isAnswerCorrect()) {
+        setCorrectAnswers(correctAnswers + 1);
+        await playSound(require("../assets/audio/correct.mp3")); // Play sound for correct answer
+      } else {
+        await playSound(require("../assets/audio/incorrect.mp3")); // Play sound for incorrect answer
+      }
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts, Inter_900Black, Inter_500Medium } from "@expo-google-fonts/inter";
@@ -8,7 +8,7 @@ import CategoryList from "./src/components/Categories";
 import NavBar from "./src/components/NavBar";
 import QuizGame from "./src/components/QuizGame";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-//import questionsData from "./src/assets/questions.json";
+import HiraganaSyllabary from "./src/components/HiraganaSillabary";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +27,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="QuestionGame" component={QuestionGame} options={{ headerShown: false }} />
+        <Stack.Screen name="Hiragana" component={Hiragana} options={{ title: "Hiragana" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -61,6 +62,9 @@ const HomeScreen = ({ navigation }) => {
       <NavBar title="Aprende Japonés!" subtitle="日本語を勉強します" />
       <View style={styles.content}>
         <ScrollView style={styles.scrollView}>
+          <TouchableOpacity onPress={() => navigation.navigate("Hiragana")}>
+            <Text style={styles.header}>Hiragana</Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={handleImageClick}>
             <Image source={require("./src/assets/images/catStudy.png")} style={styles.image} onLayout={handleImageLayout} />
           </TouchableOpacity>
@@ -76,6 +80,7 @@ const HomeScreen = ({ navigation }) => {
 const QuestionGame = ({ route, navigation }) => {
   const { category } = route.params;
   const [questionsList, setQuestionsList] = useState([]);
+  const [questionsFetched, setQuestionsFetched] = useState(false);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -89,6 +94,7 @@ const QuestionGame = ({ route, navigation }) => {
         await AsyncStorage.setItem("questions", JSON.stringify(filteredQuestions));
         // Set questionsList state
         setQuestionsList(filteredQuestions);
+        setQuestionsFetched(true);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
@@ -99,7 +105,15 @@ const QuestionGame = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <QuizGame questions={questionsList} navigation={navigation}></QuizGame>
+      {questionsFetched ? <QuizGame questions={questionsList} navigation={navigation}></QuizGame> : <ActivityIndicator size="large" color="#d22a6d" />}
+    </View>
+  );
+};
+
+const Hiragana = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <HiraganaSyllabary navigation={navigation} />
     </View>
   );
 };
