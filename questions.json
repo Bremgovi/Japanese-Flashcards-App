@@ -13,6 +13,12 @@
             "correctAnswer": "カンガルー"
         },
         {
+            "category": "Animales",
+            "question": "¿Cómo se dice perro en japonés?",
+            "answers": ["いぬ", "ねこ", "とり", "さかな"],
+            "correctAnswer": "いぬ"
+        },
+        {
             "category": "Familia",
             "question": "¿Cómo se dice 'madre' en japonés?",
             "answers": ["はは", "ちち", "あね", "おとうと"],
