@@ -2,81 +2,801 @@
     "questions": [
         {
             "category": "Animales",
-            "question": "¿Cuál es el animal nacional de Japón?",
+            "question": "¿Cómo se dice gato en japonés?",
             "answers": ["ねこ", "いぬ", "さる", "とり"],
             "correctAnswer": "ねこ"
         },
         {
             "category": "Animales",
-            "question": "¿Cuál es el animal nacional de Australia?",
-            "answers": ["コアラ", "カンガルー", "キリン", "パンダ"],
-            "correctAnswer": "カンガルー"
+            "question": "¿Qué significa la palabra ねこ?",
+            "answers": ["Perro", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Gato"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para gato?",
+            "answers": ["犬", "猫", "人", "鳥"],
+            "correctAnswer": "猫"
         },
         {
             "category": "Animales",
             "question": "¿Cómo se dice perro en japonés?",
-            "answers": ["いぬ", "ねこ", "とり", "さかな"],
+            "answers": ["ねこ", "いぬ", "さる", "とり"],
             "correctAnswer": "いぬ"
         },
         {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra いぬ?",
+            "answers": ["Perro", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Perro"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para perro?",
+            "answers": ["犬", "猫", "人", "鳥"],
+            "correctAnswer": "犬"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cómo se dice pájaro en japonés?",
+            "answers": ["ねこ", "いぬ", "さる", "とり"],
+            "correctAnswer": "とり"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra とり?",
+            "answers": ["Perro", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Pájaro"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para pájaro?",
+            "answers": ["犬", "猫", "人", "鳥"],
+            "correctAnswer": "鳥"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cómo se dice conejo en japonés?",
+            "answers": ["ねこ", "いぬ", "さる", "うさぎ"],
+            "correctAnswer": "うさぎ"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra うさぎ?",
+            "answers": ["Perro", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Conejo"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para conejo?",
+            "answers": ["犬", "猫", "兎", "鳥"],
+            "correctAnswer": "兎"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cómo se dice pez en japonés?",
+            "answers": ["さかな", "いぬ", "さる", "とり"],
+            "correctAnswer": "さかな"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra さかな?",
+            "answers": ["Pez", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Pez"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para pez?",
+            "answers": ["犬", "猫", "人", "魚"],
+            "correctAnswer": "魚"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cómo se dice caballo en japonés?",
+            "answers": ["うま", "いぬ", "さる", "とり"],
+            "correctAnswer": "うま"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra うま?",
+            "answers": ["Caballo", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Caballo"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para caballo?",
+            "answers": ["犬", "猫", "馬", "鳥"],
+            "correctAnswer": "馬"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cómo se dice zorro en japonés?",
+            "answers": ["きつね", "いぬ", "さる", "とり"],
+            "correctAnswer": "きつね"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Qué significa la palabra きつね?",
+            "answers": ["Zorro", "Gato", "Pájaro", "Conejo"],
+            "correctAnswer": "Zorro"
+        },
+        {
+            "category": "Animales",
+            "question": "¿Cuál es el kanji para zorro?",
+            "answers": ["犬", "狸", "人", "鳥"],
+            "correctAnswer": "狐"
+        },
+        {
             "category": "Familia",
-            "question": "¿Cómo se dice 'madre' en japonés?",
-            "answers": ["はは", "ちち", "あね", "おとうと"],
+            "question": "¿Cómo se dice padre en japonés?",
+            "answers": ["お父さん", "お母さん", "お姉さん", "お兄さん"],
+            "correctAnswer": "お父さん"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra お父さん?",
+            "answers": ["Padre", "Madre", "Hermana", "Hermano"],
+            "correctAnswer": "Padre"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cuál es el kanji para padre?",
+            "answers": ["父", "母", "姉", "兄"],
+            "correctAnswer": "父"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice madre en japonés?",
+            "answers": ["お母さん", "お父さん", "お姉さん", "お兄さん"],
+            "correctAnswer": "お母さん"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra お母さん?",
+            "answers": ["Madre", "Padre", "Hermana", "Hermano"],
+            "correctAnswer": "Madre"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cuál es el kanji para madre?",
+            "answers": ["母", "父", "姉", "兄"],
+            "correctAnswer": "母"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice niño o hijo en japonés?",
+            "answers": ["子供", "母", "姉", "兄"],
+            "correctAnswer": "子供"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra 子供?",
+            "answers": ["Madre", "Padre", "Niño", "Hermano"],
+            "correctAnswer": "Niño"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice padre en japonés de manera informal?",
+            "answers": ["ちち", "はは", "おねえさん", "おにいさん"],
+            "correctAnswer": "ちち"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra ちち?",
+            "answers": ["Papá", "Mamá", "Hermana", "Hermano"],
+            "correctAnswer": "Papá"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice mamá en japonés de manera informal?",
+            "answers": ["はは", "ちち", "おねえさん", "おにいさん"],
             "correctAnswer": "はは"
         },
         {
             "category": "Familia",
-            "question": "¿Cómo se dice 'hermano mayor' en japones?",
-            "answers": ["いもうと", "おとうと", "おば", "あに"],
-            "correctAnswer": "あに"
+            "question": "¿Qué significa la palabra はは?",
+            "answers": ["Mamá", "Papá", "Hermana", "Hermano"],
+            "correctAnswer": "Mamá"
         },
         {
-            "category": "Comida",
-            "question": "¿Cuál es el plato tradicional japonés hecho de arroz y pescado crudo?",
-            "answers": ["すし", "らーめん", "てんぷら", "うどん"],
-            "correctAnswer": "すし"
+            "category": "Familia",
+            "question": "¿Cómo se dice hermano mayor en japonés?",
+            "answers": ["おにいさん", "おねえさん", "おとうさん", "おかあさん"],
+            "correctAnswer": "おにいさん"
         },
         {
-            "category": "Comida",
-            "question": "¿Cuál es el plato tradicional mexicano hecho de tortillas de maíz rellenas?",
-            "answers": ["たこ", "ぶりと", "えんちらだ", "けさでぃや"],
-            "correctAnswer": "たこ"
+            "category": "Familia",
+            "question": "¿Qué significa la palabra おにいさん?",
+            "answers": ["Hermano mayor", "Hermana mayor", "Hermano menor", "Hermana menor"],
+            "correctAnswer": "Hermano mayor"
         },
         {
-            "category": "Numeros",
-            "question": "¿Cómo se dice 'cinco' en japonés?",
-            "answers": ["いち", "に", "さん", "ご"],
+            "category": "Familia",
+            "question": "¿Cuál es el hiragana para hermana mayor?",
+            "answers": ["おねえさん", "おにいさん", "おとうさん", "おかあさん"],
+            "correctAnswer": "おねえさん"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra おねえさん?",
+            "answers": ["Hermana mayor", "Hermana menor", "Hermano mayor", "Hermano menor"],
+            "correctAnswer": "Hermana mayor"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice hermano menor en japonés?",
+            "answers": ["弟", "妹", "お兄さん", "お姉さん"],
+            "correctAnswer": "弟"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa el kanji 弟?",
+            "answers": ["Hermano menor", "Hermana menor", "Hermano mayor", "Hermana mayor"],
+            "correctAnswer": "Hermano menor"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa la palabra おとうと?",
+            "answers": ["Hermano menor", "Hermana menor", "Hermano mayor", "Hermana mayor"],
+            "correctAnswer": "Hermano menor"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Cómo se dice hermana menor en japonés?",
+            "answers": ["妹", "弟", "お姉さん", "お兄さん"],
+            "correctAnswer": "妹"
+        },
+        {
+            "category": "Familia",
+            "question": "¿Qué significa el kanji 妹?",
+            "answers": ["Hermana menor", "Hermana mayor", "Hermano menor", "Hermano mayor"],
+            "correctAnswer": "Hermana menor"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice uno en japonés?",
+            "answers": ["いち", "に", "さん", "よん"],
+            "correctAnswer": "いち"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra いち en japonés?",
+            "answers": ["Uno", "Dos", "Tres", "Cuatro"],
+            "correctAnswer": "Uno"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número uno?",
+            "answers": ["一", "二", "三", "四"],
+            "correctAnswer": "一"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice dos en japonés?",
+            "answers": ["に", "いち", "さん", "よん"],
+            "correctAnswer": "に"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra に en japonés?",
+            "answers": ["Dos", "Uno", "Tres", "Cuatro"],
+            "correctAnswer": "Dos"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número dos?",
+            "answers": ["二", "一", "三", "四"],
+            "correctAnswer": "二"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice tres en japonés?",
+            "answers": ["さん", "いち", "に", "よん"],
+            "correctAnswer": "さん"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra さん en japonés?",
+            "answers": ["Tres", "Uno", "Dos", "Cuatro"],
+            "correctAnswer": "Tres"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número tres?",
+            "answers": ["三", "一", "二", "四"],
+            "correctAnswer": "三"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice cuatro en japonés?",
+            "answers": ["よん", "いち", "に", "さん"],
+            "correctAnswer": "よん"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra よん en japonés?",
+            "answers": ["Cuatro", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Cuatro"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número cuatro?",
+            "answers": ["四", "一", "二", "三"],
+            "correctAnswer": "四"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice cinco en japonés?",
+            "answers": ["ご", "いち", "に", "さん"],
             "correctAnswer": "ご"
         },
         {
+            "category": "Números",
+            "question": "¿Qué significa la palabra ご en japonés?",
+            "answers": ["Cinco", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Cinco"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número cinco?",
+            "answers": ["五", "一", "二", "三"],
+            "correctAnswer": "五"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice seis en japonés?",
+            "answers": ["ろく", "いち", "に", "さん"],
+            "correctAnswer": "ろく"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra ろく en japonés?",
+            "answers": ["Seis", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Seis"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número seis?",
+            "answers": ["六", "一", "二", "三"],
+            "correctAnswer": "六"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice siete en japonés?",
+            "answers": ["しち", "いち", "に", "さん"],
+            "correctAnswer": "しち"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra しち en japonés?",
+            "answers": ["Siete", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Siete"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número siete?",
+            "answers": ["七", "一", "二", "三"],
+            "correctAnswer": "七"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice ocho en japonés?",
+            "answers": ["はち", "いち", "に", "さん"],
+            "correctAnswer": "はち"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra はち en japonés?",
+            "answers": ["Ocho", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Ocho"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número ocho?",
+            "answers": ["八", "一", "二", "三"],
+            "correctAnswer": "八"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice nueve en japonés?",
+            "answers": ["きゅう", "いち", "に", "さん"],
+            "correctAnswer": "きゅう"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra きゅう en japonés?",
+            "answers": ["Nueve", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Nueve"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número nueve?",
+            "answers": ["九", "一", "二", "三"],
+            "correctAnswer": "九"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cómo se dice diez en japonés?",
+            "answers": ["じゅう", "いち", "に", "さん"],
+            "correctAnswer": "じゅう"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra じゅう en japonés?",
+            "answers": ["Diez", "Uno", "Dos", "Tres"],
+            "correctAnswer": "Diez"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para el número diez?",
+            "answers": ["十", "一", "二", "三"],
+            "correctAnswer": "十"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué número es el siguiente: 百五十?",
+            "answers": ["110", "150", "115", "50"],
+            "correctAnswer": "150"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para 100?",
+            "answers": ["百", "千", "万", "十"],
+            "correctAnswer": "百"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para 1000?",
+            "answers": ["千", "百", "万", "十"],
+            "correctAnswer": "千"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra 千 en japonés?",
+            "answers": ["Mil", "Cien", "Diez", "Cero"],
+            "correctAnswer": "Mil"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra 百 en japonés?",
+            "answers": ["Cien", "Mil", "Diez", "Cero"],
+            "correctAnswer": "Cien"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra 万 en japonés?",
+            "answers": ["Diez mil", "Cien mil", "Un millón", "Mil"],
+            "correctAnswer": "Diez mil"
+        },
+        {
+            "category": "Números",
+            "question": "¿Cuál es el kanji para 10,000?",
+            "answers": ["万", "千", "百", "十"],
+            "correctAnswer": "万"
+        },
+        {
+            "category": "Números",
+            "question": "¿Qué significa la palabra 万 en japonés?",
+            "answers": ["Diez mil", "Cien mil", "Un millón", "Mil"],
+            "correctAnswer": "Diez mil"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cómo se dice manzana en japonés?",
+            "answers": ["いちご", "みかん", "りんご", "ぶどう"],
+            "correctAnswer": "りんご"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Qué significa りんご?",
+            "answers": ["Manzana", "Fresa", "Mandarina", "Uva"],
+            "correctAnswer": "りんご"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cómo se dice pan en japonés?",
+            "answers": ["パン", "ごはん", "にく", "さかな"],
+            "correctAnswer": "パン"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Qué significa パン?",
+            "answers": ["Pescado", "Pan", "Arroz", "Carne"],
+            "correctAnswer": "りんご"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cómo se dice arroz en japonés?",
+            "answers": ["いちご", "みかん", "ごはん", "ぶどう"],
+            "correctAnswer": "ごはん"
+        },  
+        {
+            "category": "Comida",
+            "question": "¿Qué significa ごはん?",
+            "answers": ["Arroz", "Fresa", "Mandarina", "Uva"],
+            "correctAnswer": "Arroz"
+        },    
+        {
+            "category": "Comida",
+            "question": "¿Cómo se dice pescado en japonés?",
+            "answers": ["さかな", "パン", "にく", "りんご"],
+            "correctAnswer": "さかな"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Qué significa さかな?",
+            "answers": ["Pescado", "Pan", "Arroz", "Carne"],
+            "correctAnswer": "Pescado"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Cómo se dice fresa en japonés?",
+            "answers": ["いちご", "みかん", "りんご", "ぶどう"],
+            "correctAnswer": "いちご"
+        },
+        {
+            "category": "Comida",
+            "question": "¿Qué significa いちご?",
+            "answers": ["Fresa", "Manzana", "Mandarina", "Uva"],
+            "correctAnswer": "Fresa"
+        },
+        {
             "category": "Fechas",
-            "question": "¿Cómo se dice 'enero' en japonés?",
-            "answers": ["じゅういちがつ", "にがつ", "さんがつ", "いちがつ"],
+            "question": "¿Cómo se dice día en japonés?",
+            "answers": ["ひ", "がつ", "ねん", "じつ"],
+            "correctAnswer": "ひ"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Qué significa ひ?",
+            "answers": ["Día", "Mes", "Año", "Hora"],
+            "correctAnswer": "Día"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Cómo se dice mes en japonés?",
+            "answers": ["ひ", "がつ", "ねん", "じつ"],
+            "correctAnswer": "がつ"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Qué significa がつ?",
+            "answers": ["Mes", "Día", "Año", "Hora"],
+            "correctAnswer": "Mes"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Cómo se dice año en japonés?",
+            "answers": ["ひ", "がつ", "ねん", "じつ"],
+            "correctAnswer": "ねん"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Qué significa ねん?",
+            "answers": ["Año", "Día", "Mes", "Hora"],
+            "correctAnswer": "Año"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Cómo se dice enero en japonés?",
+            "answers": ["いちがつ", "にがつ", "さんがつ", "しがつ"],
             "correctAnswer": "いちがつ"
         },
         {
-            "category": "Cultura",
-            "question": "¿Cuál es el nombre del monte más alto de Japón?",
-            "answers": ["あそさん", "ふじさん", "たかさん", "さかさん"],
-            "correctAnswer": "ふじさん"
+            "category": "Fechas",
+            "question": "¿Qué significa いちがつ?",
+            "answers": ["Enero", "Febrero", "Marzo", "Abril"],
+            "correctAnswer": "Enero"
         },
         {
-            "category": "Gramática",
-            "question": "¿Cómo se dice 'gracias' en japonés?",
-            "answers": ["こんにちは", "さようなら", "すみません", "ありがとう"],
+            "category": "Fechas",
+            "question": "¿Cómo se dice diciembre en japonés?",
+            "answers": ["じゅういちがつ", "じゅうにがつ", "じゅうさんがつ", "じゅうしがつ"],
+            "correctAnswer": "じゅうにがつ"
+        },
+        {
+            "category": "Fechas",
+            "question": "¿Qué significa じゅうにがつ?",
+            "answers": ["Diciembre", "Noviembre", "Octubre", "Septiembre"],
+            "correctAnswer": "Diciembre"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice hola en japonés?",
+            "answers": ["こんにちは", "おはよう", "こんばんは", "さようなら"],
+            "correctAnswer": "こんにちは"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa こんにちは?",
+            "answers": ["Hola", "Buenos días", "Buenas noches", "Adiós"],
+            "correctAnswer": "Hola"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice buenos días en japonés?",
+            "answers": ["こんにちは", "おはよう", "こんばんは", "さようなら"],
+            "correctAnswer": "おはよう"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa おはよう?",
+            "answers": ["Buenos días", "Hola", "Buenas noches", "Adiós"],
+            "correctAnswer": "Buenos días"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice buenas noches en japonés?",
+            "answers": ["こんにちは", "おはよう", "こんばんは", "さようなら"],
+            "correctAnswer": "こんばんは"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa こんばんは?",
+            "answers": ["Buenas noches", "Hola", "Buenos días", "Adiós"],
+            "correctAnswer": "Buenas noches"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice adiós en japonés?",
+            "answers": ["こんにちは", "おはよう", "こんばんは", "さようなら"],
+            "correctAnswer": "さようなら"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa さようなら?",
+            "answers": ["Adiós", "Hola", "Buenos días", "Buenas noches"],
+            "correctAnswer": "Adiós"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice ¿cómo estás? en japonés?",
+            "answers": ["おはよう", "おげんきですか", "いただきます", "ありがとうございます"],
+            "correctAnswer": "おげんきですか"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa おげんきですか?",
+            "answers": ["¿Cómo estás?", "Buenos días", "Buenas noches", "Adiós"],
+            "correctAnswer": "¿Cómo estás?"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice gracias en japonés?",
+            "answers": ["ありがとう", "いいえ", "すみません", "ごめんなさい"],
             "correctAnswer": "ありがとう"
         },
         {
+            "category": "Modales",
+            "question": "¿Qué significa ありがとう?",
+            "answers": ["Gracias", "De nada", "Lo siento", "Perdón"],
+            "correctAnswer": "Gracias"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Cómo se dice de nada en japonés?",
+            "answers": ["ありがとう", "いいえ", "すみません", "いいえ"],
+            "correctAnswer": "いいえ"
+        },
+        {
+            "category": "Modales",
+            "question": "¿Qué significa いいえ?",
+            "answers": ["De nada", "Gracias", "Lo siento", "Perdón"],
+            "correctAnswer": "De nada"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es el uso de は (wa) en japonés?",
+            "answers": ["Indica el tema de la oración", "Indica posesión", "Indica ubicación", "Indica tiempo"],
+            "correctAnswer": "Indica el tema de la oración"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es la función de の (no) en japonés?",
+            "answers": ["Indica posesión", "Indica ubicación", "Indica el sujeto", "Indica tiempo"],
+            "correctAnswer": "Indica posesión"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Qué significa があります (ga arimasu) en japonés?",
+            "answers": ["Hay (para objetos inanimados)", "Estoy aquí", "Tengo", "Quiero"],
+            "correctAnswer": "Hay (para objetos inanimados)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es la traducción de がいます (ga imasu) en japonés?",
+            "answers": ["Hay (para personas o animales)", "Estoy aquí", "Tengo", "Quiero"],
+            "correctAnswer": "Hay (para personas o animales)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cómo se dice 'me gusta' en japonés?",
+            "answers": ["が好きです (ga suki desu)", "があります (ga arimasu)", "がいます (ga imasu)", "が嫌いです (ga kirai desu)"],
+            "correctAnswer": "が好きです (ga suki desu)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es la negación de あります (arimasu) en japonés?",
+            "answers": ["ありません (arimasen)", "いません (imasen)", "あります (arimasu)", "いません (imasen)"],
+            "correctAnswer": "ありません (arimasen)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es la negación de います (imasu) en japonés?",
+            "answers": ["いません (imasen)", "ありません (arimasen)", "できます (dekimasu)", "あります (arimasu)"],
+            "correctAnswer": "いません (imasen)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Qué significa これ (kore) en japonés?",
+            "answers": ["Esto", "Eso", "Aquello", "Todavía"],
+            "correctAnswer": "Esto"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cuál es el significado de この (kono) en japonés?",
+            "answers": ["Este", "Ese", "Aquel", "Todos"],
+            "correctAnswer": "Este"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Cómo se dice 'arriba' en japonés?",
+            "answers": ["上 (ue)", "下 (shita)", "左 (hidari)", "右 (migi)"],
+            "correctAnswer": "上 (ue)"
+        },
+        {
+            "category": "Gramática",
+            "question": "¿Qué significa も (mo) en japonés?",
+            "answers": ["También", "Sólo", "Quizás", "Pero"],
+            "correctAnswer": "También"
+        },
+        {
             "category": "Verbos",
-            "question": "¿Cómo se dice 'comer' en japonés?",
-            "answers": ["のむ", "たべる", "あるく", "ねる"],
-            "correctAnswer": "たべる"
+            "question": "¿Cuál es el significado de 食べる (taberu) en japonés?",
+            "answers": ["Comer", "Beber", "Dormir", "Correr"],
+            "correctAnswer": "Comer"
+        },
+        {
+            "category": "Verbos",
+            "question": "¿Cómo se dice 'estudiar' en japonés?",
+            "answers": ["勉強する (benkyou suru)", "話す (hanasu)", "見る (miru)", "行く (iku)"],
+            "correctAnswer": "勉強する (benkyou suru)"
+        },
+        {
+            "category": "Verbos",
+            "question": "¿Qué significa 見る (miru) en japonés?",
+            "answers": ["Ver", "Escuchar", "Hablar", "Escribir"],
+            "correctAnswer": "Ver"
+        },
+        {
+            "category": "Verbos",
+            "question": "¿Cuál es el significado de 行く (iku) en japonés?",
+            "answers": ["Ir", "Venir", "Estar", "Hacer"],
+            "correctAnswer": "Ir"
         },
         {
             "category": "Adjetivos",
-            "question": "¿Cómo se dice 'feliz' en japonés?",
-            "answers": ["かなしい", "うれしい", "おこっている", "つかれている"],
-            "correctAnswer": "うれしい"
+            "question": "¿Cómo se dice 'grande' en japonés?",
+            "answers": ["大きい (ookii)", "小さい (chiisai)", "新しい (atarashii)", "古い (furui)"],
+            "correctAnswer": "大きい (ookii)"
+        },
+        {
+            "category": "Adjetivos",
+            "question": "¿Qué significa 小さい (chiisai) en japonés?",
+            "answers": ["Pequeño", "Grande", "Nuevo", "Viejo"],
+            "correctAnswer": "Pequeño"
+        },
+        {
+            "category": "Adjetivos",
+            "question": "¿Cuál es el significado de 新しい (atarashii) en japonés?",
+            "answers": ["Nuevo", "Viejo", "Grande", "Pequeño"],
+            "correctAnswer": "Nuevo"
+        },
+        {
+            "category": "Adjetivos",
+            "question": "¿Qué significa 古い (furui) en japonés?",
+            "answers": ["Viejo", "Nuevo", "Grande", "Pequeño"],
+            "correctAnswer": "Viejo"
         }
     ]
 }
