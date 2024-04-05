@@ -27,8 +27,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="QuestionGame" component={QuestionGame} options={{ headerShown: false }} />
-        <Stack.Screen name="Hiragana" component={Hiragana} options={{ title: "Hiragana" }} />
-        <Stack.Screen name="Katakana" component={Katakana} options={{ title: "Katakana" }} />
+        <Stack.Screen name="Sillabary" component={SillabaryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -64,10 +63,10 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <ScrollView style={styles.scrollView}>
           <View style={styles.sillabaryContainer}>
-            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Hiragana")}>
+            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Sillabary", { type: "Hiragana", title: "Hiragana" })}>
               <Text style={styles.sillabaryText}>Hiragana</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Katakana")}>
+            <TouchableOpacity style={styles.sillabaryButton} onPress={() => navigation.navigate("Sillabary", { type: "Katakana", title: "Katakana" })}>
               <Text style={styles.sillabaryText}>Katakana</Text>
             </TouchableOpacity>
           </View>
@@ -116,6 +115,109 @@ const QuestionGame = ({ route, navigation }) => {
   );
 };
 
+const SillabaryScreen = ({ navigation, route }) => {
+  const { type, title } = route.params;
+  const sillabary = {
+    Hiragana: [
+      "あ",
+      "い",
+      "う",
+      "え",
+      "お",
+      "か",
+      "き",
+      "く",
+      "け",
+      "こ",
+      "さ",
+      "し",
+      "す",
+      "せ",
+      "そ",
+      "た",
+      "ち",
+      "つ",
+      "て",
+      "と",
+      "な",
+      "に",
+      "ぬ",
+      "ね",
+      "の",
+      "は",
+      "ひ",
+      "ふ",
+      "へ",
+      "ほ",
+      "ま",
+      "み",
+      "む",
+      "め",
+      "も",
+      "ら",
+      "り",
+      "る",
+      "れ",
+      "ろ",
+    ],
+    Katakana: [
+      "ア",
+      "イ",
+      "ウ",
+      "エ",
+      "オ",
+      "カ",
+      "キ",
+      "ク",
+      "ケ",
+      "コ",
+      "サ",
+      "シ",
+      "ス",
+      "セ",
+      "ソ",
+      "タ",
+      "チ",
+      "ツ",
+      "テ",
+      "ト",
+      "ナ",
+      "ニ",
+      "ヌ",
+      "ネ",
+      "ノ",
+      "ハ",
+      "ヒ",
+      "フ",
+      "ヘ",
+      "ホ",
+      "マ",
+      "ミ",
+      "ム",
+      "メ",
+      "モ",
+      "ラ",
+      "リ",
+      "ル",
+      "レ",
+      "ロ",
+    ],
+  };
+  const specialChars = {
+    Hiragana: ["や", "ゆ", "よ", "わ", "を", "ん"],
+    Katakana: ["ヤ", "ユ", "ヨ", "ワ", "ヲ", "ン"],
+  };
+  useEffect(() => {
+    navigation.setOptions({ title });
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Sillabary navigation={navigation} chars={sillabary[type]} specialChars={specialChars[type]} />
+    </View>
+  );
+};
+/*
 const Hiragana = ({ navigation }) => {
   const hiragana = [
     "あ",
@@ -217,7 +319,7 @@ const Katakana = ({ navigation }) => {
     </View>
   );
 };
-
+*/
 const DialogueBalloon = ({ position }) => {
   const messages = [
     "(╯°□°）╯︵ ┻━┻",
