@@ -17,7 +17,6 @@ export default function App() {
     Inter_900Black,
     Inter_500Medium,
   });
-
   if (!fontsLoaded) {
     return null;
   }
@@ -90,23 +89,27 @@ const QuestionGame = ({ route, navigation }) => {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        // Fetch questions.json from the server
         const response = await fetch("https://bremgovi.github.io/Japanese-Flashcards-App/questions.json");
         const questionsData = await response.json();
-        // Filter questions based on category
         const filteredQuestions = questionsData.questions.filter((question) => question.category === category);
-        // Save filtered questions to AsyncStorage
-        await AsyncStorage.setItem("questions", JSON.stringify(filteredQuestions));
-        // Set questionsList state
-        setQuestionsList(filteredQuestions);
+        const shuffledQuestions = shuffleArray(filteredQuestions);
+        await AsyncStorage.setItem("questions", JSON.stringify(shuffledQuestions));
+        setQuestionsList(shuffledQuestions);
         setQuestionsFetched(true);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
     }
-
     fetchQuestions();
-  }, [category]); // Fetch questions when category changes
+  }, [category]);
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   return (
     <View style={styles.container}>
@@ -217,109 +220,7 @@ const SillabaryScreen = ({ navigation, route }) => {
     </View>
   );
 };
-/*
-const Hiragana = ({ navigation }) => {
-  const hiragana = [
-    "あ",
-    "い",
-    "う",
-    "え",
-    "お",
-    "か",
-    "き",
-    "く",
-    "け",
-    "こ",
-    "さ",
-    "し",
-    "す",
-    "せ",
-    "そ",
-    "た",
-    "ち",
-    "つ",
-    "て",
-    "と",
-    "な",
-    "に",
-    "ぬ",
-    "ね",
-    "の",
-    "は",
-    "ひ",
-    "ふ",
-    "へ",
-    "ほ",
-    "ま",
-    "み",
-    "む",
-    "め",
-    "も",
-    "ら",
-    "り",
-    "る",
-    "れ",
-    "ろ",
-  ];
-  const HiraganaSpecialChars = ["や", "ゆ", "よ", "わ", "を", "ん"];
-  return (
-    <View style={styles.container}>
-      <Sillabary navigation={navigation} chars={hiragana} specialChars={HiraganaSpecialChars} />
-    </View>
-  );
-};
 
-const Katakana = ({ navigation }) => {
-  const katakana = [
-    "ア",
-    "イ",
-    "ウ",
-    "エ",
-    "オ",
-    "カ",
-    "キ",
-    "ク",
-    "ケ",
-    "コ",
-    "サ",
-    "シ",
-    "ス",
-    "セ",
-    "ソ",
-    "タ",
-    "チ",
-    "ツ",
-    "テ",
-    "ト",
-    "ナ",
-    "ニ",
-    "ヌ",
-    "ネ",
-    "ノ",
-    "ハ",
-    "ヒ",
-    "フ",
-    "ヘ",
-    "ホ",
-    "マ",
-    "ミ",
-    "ム",
-    "メ",
-    "モ",
-    "ラ",
-    "リ",
-    "ル",
-    "レ",
-    "ロ",
-  ];
-  const KatakanaSpecialChars = ["ヤ", "ユ", "ヨ", "ワ", "ヲ", "ン"];
-  return (
-    <View style={styles.container}>
-      <Sillabary navigation={navigation} chars={katakana} specialChars={KatakanaSpecialChars} />
-    </View>
-  );
-};
-*/
 const DialogueBalloon = ({ position }) => {
   const messages = [
     "(╯°□°）╯︵ ┻━┻",

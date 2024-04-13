@@ -2,12 +2,12 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 export default function CategoryList({ navigation }) {
   const categories = [
-    { id: 1, image: require(`../assets/images/animales.png`), text: "Animales" },
-    { id: 2, image: require(`../assets/images/familia.png`), text: "Familia" },
-    { id: 3, image: require(`../assets/images/comida.png`), text: "Comida" },
-    { id: 4, image: require(`../assets/images/numeros.png`), text: "Numeros" },
+    { id: 1, image: require(`../assets/images/familia.png`), text: "Familia" },
+    { id: 2, image: require(`../assets/images/animales.png`), text: "Animales" },
+    { id: 3, image: require(`../assets/images/numeros.png`), text: "Numeros" },
+    { id: 4, image: require(`../assets/images/comida.png`), text: "Comida" },
     { id: 5, image: require(`../assets/images/fechas.png`), text: "Fechas" },
-    { id: 6, image: require(`../assets/images/cultura.png`), text: "Cultura" },
+    { id: 6, image: require(`../assets/images/modales.png`), text: "Modales" },
     { id: 7, image: require(`../assets/images/gramatica.png`), text: "Gramática" },
     { id: 8, image: require(`../assets/images/verbos.png`), text: "Verbos" },
     { id: 9, image: require(`../assets/images/adjetivos.png`), text: "Adjetivos" },

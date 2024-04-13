@@ -25,10 +25,11 @@ const QuizGame = ({ questions, navigation }) => {
   }, [currentQuestionIndex]);
 
   const handleTTS = (answer) => {
-    if (isPlaying) {
+    const isJapanese = /[^\u0000-\u007FáéíóúÁÉÍÓÚüÜñÑ]/.test(answer);
+    if (isJapanese && isPlaying) {
       Speech.stop();
       Speech.speak(answer, { language: "ja-JP" });
-    } else {
+    } else if (isJapanese) {
       Speech.speak(answer, { language: "ja-JP" });
       setIsPlaying(true);
     }
