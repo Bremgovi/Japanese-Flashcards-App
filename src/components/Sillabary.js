@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   characterButton: {
-    margin: 5,
+    margin: 4,
     paddingLeft: 15,
     paddingRight: 15,
     padding: 0,
