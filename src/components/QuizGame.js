@@ -1,28 +1,57 @@
 import React, { useState, useEffect } from "react";
+import { useFonts } from "expo-font";
 import { View, Text, TouchableOpacity, StyleSheet, TouchableWithoutFeedback, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import * as Speech from "expo-speech";
 import { Audio } from "expo-av";
 
 const QuizGame = ({ questions, navigation }) => {
-  const [sound, setSound] = useState();
+  const [sound, setSound] = useState(null);
+  const [lives, setLives] = useState(3);
   const [isPlaying, setIsPlaying] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [finalScreenProps, setFinalScreenProps] = useState({});
+
+  useEffect(() => {
+    if (questions && questions.length > 0) {
+      if (currentQuestionIndex >= questions.length) {
+        playSound(require("../assets/audio/lessonFinish.mp3"));
+        setGameOver(true);
+        setFinalScreenProps({
+          headerText: "You've completed the game!",
+          imageSource: require("../assets/images/endLesson.png"),
+          resultText: `You answered ${correctAnswers} out of ${questions.length} questions correctly.`,
+        });
+      }
+      if (lives <= 0) {
+        setGameOver(true);
+        setFinalScreenProps({
+          headerText: "You've lost the game!",
+          imageSource: require("../assets/images/lose.png"),
+          resultText: `You answered ${correctAnswers} out of ${questions.length} questions correctly.`,
+        });
+        setIsSubmitted(false);
+        setSelectedAnswer(null);
+      }
+    }
+  }, [currentQuestionIndex, lives]);
+
+  const [fontsLoaded] = useFonts({
+    "8bitoperator_jve": require("../assets/fonts/8bitoperator_jve.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  }
 
   async function playSound(audio) {
     const { sound } = await Audio.Sound.createAsync(audio);
     setSound(sound);
     await sound.playAsync();
   }
-
-  useEffect(() => {
-    if (currentQuestionIndex === questions.length) {
-      playSound(require("../assets/audio/lessonFinish.mp3"));
-    }
-  }, [currentQuestionIndex]);
 
   const handleTTS = (answer) => {
     const isJapanese = /[^\u0000-\u007FáéíóúÁÉÍÓÚüÜñÑ]/.test(answer);
@@ -54,6 +83,7 @@ const QuizGame = ({ questions, navigation }) => {
         await playSound(require("../assets/audio/correct.mp3")); // Play sound for correct answer
       } else {
         await playSound(require("../assets/audio/incorrect.mp3")); // Play sound for incorrect answer
+        setLives(lives - 1);
       }
     }
   };
@@ -67,44 +97,43 @@ const QuizGame = ({ questions, navigation }) => {
 
   return (
     <View style={[styles.container, styles.background]}>
-      {currentQuestionIndex < questions.length ? (
-        <View style={styles.container}>
-          <Image
-            source={require("../assets/images/catStudy.png")}
-            style={{
-              width: 150,
-              height: 150,
-              marginBottom: 5,
-            }}
-          />
-          <Text style={styles.question}>{questions[currentQuestionIndex].question}</Text>
-          {questions[currentQuestionIndex].answers.map((answer, index) => (
-            <TouchableWithoutFeedback key={index} onPress={() => handleAnswerSelection(answer)} disabled={isSubmitted}>
-              <View style={[styles.answerButton, selectedAnswer === answer ? styles.selectedAnswer : null]}>
-                <Text style={[styles.answerText, selectedAnswer === answer ? styles.selectedAnswerText : null]}>{answer}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-          ))}
-        </View>
+      {!gameOver ? (
+        questions && questions.length > 0 && currentQuestionIndex < questions.length ? (
+          <View style={styles.container}>
+            <View style={styles.livesCounter}>
+              <Image
+                source={require("../assets/images/heart.png")}
+                style={{
+                  width: 50,
+                  height: 50,
+                  marginRight: 20,
+                }}
+              ></Image>
+              <Text style={styles.livesText}>{lives}</Text>
+            </View>
+            <Image
+              source={require("../assets/images/catStudy.png")}
+              style={{
+                width: 150,
+                height: 150,
+                marginBottom: 5,
+                marginTop: 100,
+              }}
+            />
+            <Text style={styles.question}>{questions[currentQuestionIndex].question}</Text>
+            {questions[currentQuestionIndex].answers.map((answer, index) => (
+              <TouchableWithoutFeedback key={index} onPress={() => handleAnswerSelection(answer)} disabled={isSubmitted}>
+                <View style={[styles.answerButton, selectedAnswer === answer ? styles.selectedAnswer : null]}>
+                  <Text style={[styles.answerText, selectedAnswer === answer ? styles.selectedAnswerText : null]}>{answer}</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            ))}
+          </View>
+        ) : (
+          <Text style={styles.question}>No questions available</Text>
+        )
       ) : (
-        <View style={styles.finalScreen}>
-          <Text style={styles.finalScreenHeader}>Haz completado la lección!</Text>
-          <Image
-            source={require("../assets/images/endLesson.png")}
-            style={{
-              width: 200,
-              height: 200,
-              margin: 20,
-            }}
-          />
-          <Text style={styles.finalScreenText}>
-            Has contestado{" "}
-            <Text style={{ color: "rgba(119, 164, 204, 1)" }}>
-              {correctAnswers} de {questions.length}{" "}
-            </Text>
-            preguntas correctamente.
-          </Text>
-        </View>
+        <FinalScreen {...finalScreenProps} />
       )}
       <View style={[styles.feedbackBox, isSubmitted ? styles.feedbackBoxShow : null]}>
         <Text style={[styles.feedbackHeader, isAnswerCorrect() ? styles.correctAnswerText : styles.incorrectAnswerText]}>
@@ -122,18 +151,18 @@ const QuizGame = ({ questions, navigation }) => {
             styles.submitButton,
             isSubmitted ? (isAnswerCorrect() ? styles.correctAnswer : styles.incorrectAnswer) : null,
             !selectedAnswer ? styles.disabledButton : null,
-            currentQuestionIndex < questions.length ? null : { backgroundColor: "rgba(170, 209, 230, 1)" },
+            !gameOver ? null : { backgroundColor: "rgba(170, 209, 230, 1)" },
           ]}
           onPress={() => {
-            if (currentQuestionIndex < questions.length) {
+            if (!gameOver) {
               handleSubmit();
             } else {
               navigation.navigate("HomeScreen");
             }
           }}
-          disabled={!selectedAnswer && !isSubmitted && currentQuestionIndex < questions.length}
+          disabled={!selectedAnswer && !isSubmitted && !gameOver}
         >
-          <Text style={styles.submitButtonText}>{currentQuestionIndex < questions.length ? (isSubmitted ? "Siguiente" : "Checar") : "Volver"}</Text>
+          <Text style={styles.submitButtonText}>{!gameOver ? (isSubmitted ? "Siguiente" : "Checar") : "Volver"}</Text>
         </TouchableOpacity>
         {isSubmitted && (
           <Text style={[styles.feedbackText, isAnswerCorrect() ? styles.correctAnswerText : styles.incorrectAnswerText]}>
@@ -144,6 +173,24 @@ const QuizGame = ({ questions, navigation }) => {
     </View>
   );
 };
+
+const FinalScreen = ({ headerText, imageSource, resultText }) => {
+  return (
+    <View style={styles.finalScreen}>
+      <Text style={styles.finalScreenHeader}>{headerText}</Text>
+      <Image
+        source={imageSource}
+        style={{
+          width: 200,
+          height: 200,
+          margin: 20,
+        }}
+      />
+      <Text style={styles.finalScreenText}>{resultText}</Text>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   background: {
     backgroundColor: "rgba(36, 36, 61, 1)",
@@ -248,6 +295,22 @@ const styles = StyleSheet.create({
   },
   disabledButton: {
     backgroundColor: "rgba(170, 209, 230, 0.5)",
+  },
+  livesCounter: {
+    marginTop: 20,
+    marginRight: 20,
+    position: "absolute",
+    top: 10,
+    right: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  livesText: {
+    fontFamily: "8bitoperator_jve",
+    color: "white",
+    fontSize: 40,
   },
 });
 
